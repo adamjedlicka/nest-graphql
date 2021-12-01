@@ -14,10 +14,10 @@ FROM node:16.13.0-alpine3.14
 
 WORKDIR /app
 
-COPY --from=build package.json yarn.lock ./
+COPY --from=build /app/package.json /app/yarn.lock ./
 
 RUN yarn install --prod
 
-COPY --from=build dist ./
+COPY --from=build /app/dist ./
 
 CMD yarn start:prod
